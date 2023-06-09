@@ -1,8 +1,8 @@
 import React from "react";
-import LoginCard from "../Components/LoginCard";
+import LoginCard from "../../Components/LoginCard/LoginCard";
 import "./Login.css";
-import googleIcon from "../Assets/google.svg";
-import appleIcon from "../Assets/apple.svg";
+import googleIcon from "../../Assets/googleIcon.png";
+import appleIcon from "../../Assets/appleIcon.png";
 
 function login() {
   return (

@@ -48,9 +48,10 @@
 }
 
 .contentDiv .socialSignins .icons {
-    width: 15px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
     margin-left: 15px;
+    margin-top: 2px;
 }
 
 .register {
