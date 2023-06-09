@@ -3,8 +3,23 @@ import LoginCard from "../../Components/LoginCard/LoginCard";
 import "./Login.css";
 import googleIcon from "../../Assets/googleIcon.png";
 import appleIcon from "../../Assets/appleIcon.png";
+import { GoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 
-function login() {
+function Login() {
+  // const [ user, setUser ] = useState([]);
+  // const [ profile, setProfile ] = useState([]);
+
+  const navigate = useNavigate();
+
+  const responseMessage = (response) => {
+    console.log(response);
+    navigate("/dashboard");
+  };
+  const errorMessage = (error) => {
+    console.log(error);
+  };
+
   return (
     <div className="flex flex-row grid grid-cols-5">
       {/* Dividing login page into 2 sections */}
@@ -18,14 +33,11 @@ function login() {
           {/* Buttons for google and apple signin */}
           <button className="socialSignins">
             {" "}
-            <div className="grid grid-cols-12">
-              <img
-                src={googleIcon}
-                alt="Google Icon"
-                className="icons col-span-1"
-              />
-              <span className="col-span-11 mt-1">Sign in with Google</span>
-            </div>
+            <GoogleLogin
+              style={{ height: "10px" }}
+              onSuccess={responseMessage}
+              onError={errorMessage}
+            />
           </button>
           <button className="socialSignins ml-3 my-4">
             <div className="grid grid-cols-12">
@@ -52,4 +64,4 @@ function login() {
   );
 }
 
-export default login;
+export default Login;

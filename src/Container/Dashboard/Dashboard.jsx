@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Dashboard.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Topbar from "../../Components/Topbar/Topbar";
@@ -12,7 +12,22 @@ import total_transactions_icon from "../../Assets/total_transactions_icon.png";
 import total_likes_icon from "../../Assets/total_likes_icon.png";
 import total_users_icon from "../../Assets/total_users_icon.png";
 
-function dashboard() {
+const Dashboard = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly", {mode: "no-cors"}
+        );
+        console.log("Success", response);
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="main flex flex-row grid-cols-12">
       <div className="basis-72 p-8">
@@ -56,4 +71,4 @@ function dashboard() {
   );
 }
 
-export default dashboard;
+export default Dashboard;

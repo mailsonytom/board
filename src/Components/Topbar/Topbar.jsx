@@ -2,8 +2,16 @@ import React from "react";
 import "./Topbar.css";
 import NotificationIcon from "../../Assets/notification.png";
 import profilepic from "../../Assets/prof_image.png";
+import { googleLogout } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 
 function Topbar() {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    googleLogout();
+    navigate("/login");
+  };
   return (
     <div className="grid grid-cols-12 m-14">
       <div className="col-span-8 page-heading">
@@ -22,7 +30,12 @@ function Topbar() {
           />
         </div>
         <div className="col-span-1 ml-1 cursor-pointer">
-          <img src={profilepic} className="rounded-full" alt="profile" />
+          <img
+            src={profilepic}
+            className="rounded-full"
+            alt="profile"
+            onClick={logout}
+          />
         </div>
       </div>
     </div>
